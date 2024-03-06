@@ -1,18 +1,11 @@
 # Import libraries
 import os
 import streamlit as st
-import openai
-from dotenv import load_dotenv
 import requests
 import csv
 from jobspy import scrape_jobs
 import pandas as pd
 import google.generativeai as genai
-
-# Load .env file
-load_dotenv()
-
-
 
 # Initialize OpenAI api client
 genai.configure(api_key=st.session_state.geminiapi)

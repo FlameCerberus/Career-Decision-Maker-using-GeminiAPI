@@ -3,19 +3,14 @@
 import pandas as pd
 import os
 import streamlit as st
-from dotenv import load_dotenv
-import requests
+
 from PyPDF2 import PdfReader
 import google.generativeai as genai
 import os
-from dotenv import load_dotenv
 import streamlit as st
 import json
 
-# Load .env file
-load_dotenv()
-
-# Initialize OpenAI api client
+# Initialize Gemini api client
 genai.configure(api_key=st.session_state.geminiapi)
 
 # %%
@@ -139,7 +134,10 @@ Overall, your skills and experience are a good match for the job description, an
 
 
 def gemini_ai_resume(extracted_resume):
+    
 
+
+    
     # Gemini set up configuration
     generation_config = {
         "temperature": 0.7,
@@ -147,7 +145,7 @@ def gemini_ai_resume(extracted_resume):
         "top_k": 1,
         "max_output_tokens": 2048,
     }
-
+    
     safety_settings = [
         {
             "category": "HARM_CATEGORY_HARASSMENT",
@@ -362,28 +360,14 @@ def main():
         
     st.title("Input your details")
 
-    # Create two columns layout
-    col1, col2 = st.columns(2)
 
-    # Text input for the left column
-    with col1:
-        education = st.text_area("Education:", value=st.session_state.education_saved)
-
-    with col1:
-        work_experience = st.text_area("Work Experience:", value=st.session_state.work_experience_saved)
-
-    # Text input for the right column
-    with col2:
-        projects = st.text_area("Projects:", value=st.session_state.projects_saved)
-
-    with col2:
-        skills = st.text_area("Skills:", value=st.session_state.skills_saved)
+    
 
 
-    #education = st.text_area("Education:", value=st.session_state.education_saved)
-    #work_experience = st.text_area("Work Experience:", value=st.session_state.work_experience_saved)
-    #projects = st.text_area("Projects:", value=st.session_state.projects_saved)
-    #skills = st.text_area("Skills:", value=st.session_state.skills_saved)
+    education = st.text_area("Education:", value=st.session_state.education_saved)
+    work_experience = st.text_area("Work Experience:", value=st.session_state.work_experience_saved)
+    projects = st.text_area("Projects:", value=st.session_state.projects_saved)
+    skills = st.text_area("Skills:", value=st.session_state.skills_saved)
     
     # Button to submit and save
     if st.button("Submit"):
