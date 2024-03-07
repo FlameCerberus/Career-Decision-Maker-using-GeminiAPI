@@ -4,7 +4,8 @@ import streamlit as st
 import requests
 import csv
 import scrape_jobs
-from jobspy import scrape_jobs
+#from jobspy import scrape_jobs
+import jobspy
 import pandas as pd
 import google.generativeai as genai
 
