@@ -2,7 +2,7 @@
 import streamlit as st
 
 
-import jobspy
+from jobspy import scrape_jobs
 
 
 
