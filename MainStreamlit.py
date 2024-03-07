@@ -18,7 +18,8 @@ def main():
 
 
     # GitHub stars link
-    st.markdown("[![GitHub stars](https://img.shields.io/github/stars/your_username/your_repo.svg?style=social)](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI)")
+    st.markdown("[![GitHub stars](https://img.shields.io/github/stars/FlameCerberus/Career-Decision-Maker-using-GeminiAPI.svg?style=social)](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI)")
+
 
     # Emoji
     st.markdown("<p style='font-size: 24px;'>🌟💼✨</p>", unsafe_allow_html=True)
