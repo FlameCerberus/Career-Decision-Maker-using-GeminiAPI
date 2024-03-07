@@ -1,4 +1,5 @@
 PyPDF2
+openpyxl
 google-generativeai
 pandas
 google
