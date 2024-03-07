@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import requests
 import csv
-
+from jobspy import scrape_jobs
 import jobspy
 import pandas as pd
 import google.generativeai as genai
