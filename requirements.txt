@@ -3,5 +3,5 @@ openpyxl
 google-generativeai
 pandas
 google
-python-jobspy
+jobspy
 streamlit
