@@ -1,7 +1,6 @@
 PyPDF2==1.26.0
 google-generativeai
 pandas==1.3.3
-PyPDF2==1.26.0
 google
 jobspy
 streamlit
