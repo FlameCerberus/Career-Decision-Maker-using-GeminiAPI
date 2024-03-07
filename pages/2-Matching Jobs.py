@@ -4,6 +4,7 @@ import streamlit as st
 import requests
 import csv
 
+import jobspy
 import pandas as pd
 import google.generativeai as genai
 
