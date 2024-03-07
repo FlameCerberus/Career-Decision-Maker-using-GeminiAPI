@@ -3,8 +3,7 @@
 import pandas as pd
 import os
 import streamlit as st
-
-#from PyPDF2 import PdfReader
+from PyPDF2 import PdfReader
 import google.generativeai as genai
 import os
 import streamlit as st
