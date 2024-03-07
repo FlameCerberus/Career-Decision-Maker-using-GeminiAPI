@@ -421,25 +421,25 @@ def main():
         json_string2 = summarized_result.text.strip('json').strip()
         print(json_string2)
         #print(summarized_result.text)
-        data = json.loads(json_string2)
+        #data = json.loads(json_string2)
 
         # data = json.load(summarized_result.text)
         
         
 
 
-        education = data["Education"]
-        work_experience = data["Work Experience"]
-        projects = data["Projects"]
-        skills = data["Skills"]
+        # education = data["Education"]
+        # work_experience = data["Work Experience"]
+        # projects = data["Projects"]
+        # skills = data["Skills"]
 
 
 
-        st.write("LAST BUT NOT LEAST JSON FIXED:")
-        st.write(education)
-        st.write(work_experience)
-        st.write(projects)
-        st.write(skills)
+        # st.write("LAST BUT NOT LEAST JSON FIXED:")
+        # st.write(education)
+        # st.write(work_experience)
+        # st.write(projects)
+        # st.write(skills)
 
 
         
