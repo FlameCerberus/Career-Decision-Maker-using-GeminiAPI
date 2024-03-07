@@ -1,7 +1,9 @@
 # Importing Libraries
 import streamlit as st
 
-from jobspy import scrape_jobs
+
+import jobspy
+
 
 
 
