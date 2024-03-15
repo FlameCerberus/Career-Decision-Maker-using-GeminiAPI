@@ -630,7 +630,7 @@ unsafe_allow_html=True)
     
     ####### Job Search Automation Part (Scraping) #######
     st.title('Job Search Match')
-    job_desc = st.text_area("Input your desired Job Title")
+    job_desc = st.text_area("Job Title")
     
     column1, column2, column3 = st.columns(3)
 
