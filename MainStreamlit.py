@@ -583,7 +583,7 @@ unsafe_allow_html=True)
 
 
             jobs = scrape_jobs(
-                site_name=["indeed"],
+                site_name=["linkedin"],
                 search_term=job_desc,
                 location="Malaysia",
                 results_wanted=num_job,
