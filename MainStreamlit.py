@@ -643,15 +643,15 @@ unsafe_allow_html=True)
         with st.spinner('Searching for jobs...'):
 
 
-             jobs = scrape_jobs(
-                 site_name=["indeed"],
-                 search_term=job_desc,
-                 location="Malaysia",
-                 results_wanted=num_job,
-                 hours_old=240,  # Only LinkedIn is hour specific, others round up to days old
-                 country_indeed='Malaysia'  # Only needed for indeed / glassdoor
-             )
-             jobs.to_csv("jobss.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
+            jobs = scrape_jobs(
+                site_name=["indeed"],
+                search_term=job_desc,
+                location="Malaysia",
+                results_wanted=num_job,
+                hours_old=240,  # Only LinkedIn is hour specific, others round up to days old
+                country_indeed='Malaysia'  # Only needed for indeed / glassdoor
+            )
+            jobs.to_csv("jobss.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
 
 
             
