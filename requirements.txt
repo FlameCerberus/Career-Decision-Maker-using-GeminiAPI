@@ -4,4 +4,4 @@ google-generativeai
 pandas
 google
 python-jobspy
-streamlit
+streamlit==1.29
