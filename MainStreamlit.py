@@ -640,7 +640,7 @@ unsafe_allow_html=True)
         options = st.multiselect('Platform to find the job listings', ['Indeed','None','Test'], default='Indeed')
 
     if st.button('Find Jobs') and num_job > 0 and num_job < (num_job + 1):
-        with st.spinner('Searching for jobs...'):
+        #with st.spinner('Searching for jobs...'):
 
 
             # jobs = scrape_jobs(
