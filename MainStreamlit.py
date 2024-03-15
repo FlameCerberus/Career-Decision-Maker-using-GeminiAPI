@@ -377,9 +377,6 @@ def stream_data(text):
 
 def main():
 
-    if 'counter' not in st.session_state:
-        st.session_state['counter'] = 0
-
     #st.sidebar.write("<img src='logo.gif' >", unsafe_allow_html=True)
     #st.sidebar.image("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2FnaDdiaTZxbWpweXpmNTBidjV5cGdzcGEwajRyMmpwYng5amljbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tYCYOxKldsfPPDqrWG/giphy.gif", caption='Your Awesome GIF', use_column_width=True)
         
@@ -464,16 +461,10 @@ unsafe_allow_html=True)
     if "skills_saved" not in st.session_state:
         st.session_state.skills_saved = ""
 
-    
-
-
-    
     col1, col2, col3 = st.columns(3)
 
     with col1:
         selection = st.selectbox("Choose upload background method", ["Resume Scanner","Manual"], 0)
-
-
 
 
     if selection == "Manual":
@@ -483,52 +474,12 @@ unsafe_allow_html=True)
         work_experience = st.text_area("Work Experience:", value=st.session_state.work_experience_saved)
         projects = st.text_area("Projects:", value=st.session_state.projects_saved)
         skills = st.text_area("Skills:", value=st.session_state.skills_saved)
-
-
-
         
         if st.button("Submit"):
             if education.strip() and work_experience.strip() and projects.strip() and skills.strip():
                 st.success("Successfully saved!")
             else:
                 st.error("Error: There are missing data in one of the variables", icon="🚨")
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-            # st.write("Your Details")
-            # st.write("### Education:")
-            # st.write(education)
-            # st.session_state.education_saved = education
-
-            # st.write("### Work Experience:")
-            # st.write(work_experience)
-            # st.session_state.work_experience_saved = work_experience
-
-            # st.write("### Projects:")
-            # st.write(projects)
-            # st.session_state.projects_saved = projects
-
-            # st.write("### Skills:")
-            # st.write(skills)
-            # st.session_state.skills_saved = skills
-            # st.sidebar.success('Information upload Success!')
-
-
-
-
 
     elif selection == "Resume Scanner":
     
@@ -547,10 +498,6 @@ unsafe_allow_html=True)
             #st.write("Summarized:")
             #st.write(summarized_result.text)
 
-
-
-           
-
             cleaned_data = summarized_result.text.replace("json", "").replace("`", "")
             data = json.loads(cleaned_data)
 
@@ -559,19 +506,11 @@ unsafe_allow_html=True)
             projects_json = data.get("Projects")
             skills_json = data.get("Skills")
 
-
-
-           
-
             education_text = removeJSON(education_json)
             work_experience_text = removeJSON(work_experience_json)
             projects_text = removeJSON(projects_json)
             skills_text = removeJSON(skills_json)
 
-
-            
-            
-        
             st.session_state.education_saved = education_text
             st.session_state.work_experience_saved = work_experience_text
             st.session_state.projects_saved = projects_text
@@ -630,7 +569,7 @@ unsafe_allow_html=True)
     
     ####### Job Search Automation Part (Scraping) #######
     st.title('Job Search Match')
-    job_desc = st.text_area("Job Title")
+    job_desc = st.text_area("Input your desired Job Title")
     
     column1, column2, column3 = st.columns(3)
 
@@ -701,46 +640,3 @@ def make_clickable(job_title, job_url):
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-# df = pd.read_csv("jobss.csv")   
-# df['match_rate'] = df['description'].apply(lambda x: gemini_ai_job_matcher(education, work_experience, projects, skills, x))
-# df = df[["title", "company", "match_rate", "job_url"]]
-# df = df.sort_values(by='match_rate', ascending=False, na_position='last')
-# df['Job Title'] = df.apply(lambda row: make_clickable(row['title'], row['job_url']), axis=1)
-# df = df.rename(columns={'company': 'Company', 'match_rate': 'Match Rate'})
-# st.header("Jobs")
-    
-#     df_debug = pd.read_csv("Debug.csv")
-#     html_debug = df_debug.to_html(escape=False, index=False, justify="center")
-#     styled_html = f"""
-#     <style>
-#     table {{
-#         margin: auto;
-#         text-align: center;
-#         background-color: dark;
-#         border-collapse: collapse;
-#     }}
-#     th, td {{
-#         border: 1px solid white;
-#         padding: 8px; 
-#         color: white; 
-#     }}
-#       th {{
-#     background-color: #4CAF50; /* COLOUR HERE */
-#   }}
-#     </style>{html_debug}
-#     """
-
-
-#     st.markdown(styled_html, unsafe_allow_html=True)
