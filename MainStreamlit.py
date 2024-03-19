@@ -557,8 +557,8 @@ unsafe_allow_html=True)
         with st.spinner("Generating opinion"):
             opinion_result = gemini_ai(st.session_state.education_saved, st.session_state.work_experience_saved, st.session_state.projects_saved, st.session_state.skills_saved, job_desc)
             with st.container(border=True):
-                #st.write_stream(opinion_result.text)
-                st.write(opinion_result.text)
+                st.write_stream(opinion_result.text)
+                #st.write(opinion_result.text)
             st.toast('Succesfully Generated Opinion', icon='🤖')
 
         
