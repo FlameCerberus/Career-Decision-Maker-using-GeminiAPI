@@ -451,7 +451,8 @@ unsafe_allow_html=True)
 
     
 
-
+    if "resume" not in st.session_state:
+        st.session_state.resume = False
     if "education_saved" not in st.session_state:
         st.session_state.education_saved = ""
     if "work_experience_saved" not in st.session_state:
@@ -487,64 +488,62 @@ unsafe_allow_html=True)
         uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
         
         
-
-        if uploaded_file is not None:
-            text = extract_text_from_pdf(uploaded_file)
-            #st.text("Extracted Text:")
-            #st.write(text)
-            summarized_result = gemini_ai_resume(text)
-
-
-            #st.write("Summarized:")
-            #st.write(summarized_result.text)
-
-            cleaned_data = summarized_result.text.replace("json", "").replace("`", "")
-            data = json.loads(cleaned_data)
-
-            education_json = data.get("Education")
-            work_experience_json = data.get("Work Experience") or data.get("WorkExperience") or data.get("Work_Experience")
-            projects_json = data.get("Projects")
-            skills_json = data.get("Skills")
-
-            education_text = removeJSON(education_json)
-            work_experience_text = removeJSON(work_experience_json)
-            projects_text = removeJSON(projects_json)
-            skills_text = removeJSON(skills_json)
-
-            st.session_state.education_saved = education_text
-            st.session_state.work_experience_saved = work_experience_text
-            st.session_state.projects_saved = projects_text
-            st.session_state.skills_saved = skills_text
+        if st.session_state.resume == False:
+            if uploaded_file is not None:
+                text = extract_text_from_pdf(uploaded_file)
+                #st.text("Extracted Text:")
+                #st.write(text)
+                summarized_result = gemini_ai_resume(text)
 
 
-            with st.expander("See Information"):
-                st.subheader("Education")
-                st.write(education_text)
+                #st.write("Summarized:")
+                #st.write(summarized_result.text)
 
-                st.subheader("Work Experience")
-                st.write(work_experience_text)
+                cleaned_data = summarized_result.text.replace("json", "").replace("`", "")
+                data = json.loads(cleaned_data)
 
-                st.subheader("Projects")
-                st.write(projects_text)
+                education_json = data.get("Education")
+                work_experience_json = data.get("Work Experience") or data.get("WorkExperience") or data.get("Work_Experience")
+                projects_json = data.get("Projects")
+                skills_json = data.get("Skills")
 
-                st.subheader("Skills")
-                st.write(skills_text)
-                #st.write("**Work Experience:**\n", work_experience_text)
-                #st.write("**Projects:**\n", projects_text)
-                #st.write("**Skills:**", skills_text)
+                education_text = removeJSON(education_json)
+                work_experience_text = removeJSON(work_experience_json)
+                projects_text = removeJSON(projects_json)
+                skills_text = removeJSON(skills_json)
+
+                st.session_state.education_saved = education_text
+                st.session_state.work_experience_saved = work_experience_text
+                st.session_state.projects_saved = projects_text
+                st.session_state.skills_saved = skills_text
+                st.session_state.resume = True
+
+                with st.expander("See Information"):
+                    st.subheader("Education")
+                    st.write(education_text)
+
+                    st.subheader("Work Experience")
+                    st.write(work_experience_text)
+
+                    st.subheader("Projects")
+                    st.write(projects_text)
+
+                    st.subheader("Skills")
+                    st.write(skills_text)
+                    #st.write("**Work Experience:**\n", work_experience_text)
+                    #st.write("**Projects:**\n", projects_text)
+                    #st.write("**Skills:**", skills_text)
 
 
 
-
-        else:
-            st.warning('Please Upload Your Resume in PDF Format', icon="⚠️")
-
+            
+            else:
+                st.warning('Please Upload Your Resume in PDF Format', icon="⚠️")
+            
     education = st.session_state.education_saved
     work_experience = st.session_state.work_experience_saved
     projects = st.session_state.projects_saved
     skills = st.session_state.skills_saved
-
-
 
 
     ####### Job Comparison #######
@@ -574,16 +573,16 @@ unsafe_allow_html=True)
     column1, column2, column3 = st.columns(3)
 
     with column1:  
-        num_job = st.number_input('Enter the number of jobs to list', value=5, min_value = 1, max_value = 15)
+        num_job = st.number_input('Enter the number of jobs to list', value=5, min_value = 1, max_value = 15)       #  Number of jobs to list in the html table
     with column1:
-        options = st.multiselect('Platform to find the job listings', ['Indeed','None','Test'], default='Indeed')
-
+        options = st.multiselect('Platform to find the job listings', ['Indeed','LinkedIn','Test'], default='Indeed')   # Multiselect options for the job scrape
+    site_names = [option.lower() for option in options]                                                             # Formatting for job scrape
     if st.button('Find Jobs') and num_job > 0 and num_job < (num_job + 1):
         with st.spinner('Searching for jobs...'):
 
 
-            jobs = scrape_jobs(
-                site_name=["linkedin"],
+            jobs = scrape_jobs(     # Job scraping
+                site_name=site_names,
                 search_term=job_desc,
                 location="Malaysia",
                 results_wanted=num_job,
