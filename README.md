@@ -1,5 +1,5 @@
 # Smart Decision Assistant: Let AI Guide Your Career
-![Image](Career-Decision-Maker-using-GeminiAPI/Images/HEADERIMG.svg)
+![Image]([Career-Decision-Maker-using-GeminiAPI/Images/HEADERIMG.svg](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI/blob/main/Images/HEADERIMG.svg))
 
 ## Introduction
 Welcome to the Smart Decision Assistant, an innovative Streamlit app designed to guide your career decisions with the power of AI. Our app leverages GeminiAI to analyze your resume and match you with the best job opportunities.
@@ -29,10 +29,10 @@ Welcome to the Smart Decision Assistant, an innovative Streamlit app designed to
 ![Upload your Resume file](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI/assets/96816249/1b956e18-de22-4fbd-8590-40e3d1552bea)
 Upload your resume file by dragging it or selecting it in your file explorer.
 
-![Job Compatibility](https://github.com/topics/readme-template)
+![Job Compatibility]![Job Comparison](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI/assets/96816249/c5a9bc49-e9c0-4346-a069-7070bb0e38bb)
 Input the job description you want to have compared to. In this example, an automation software development job description is compared to the resume of an electronic engineer graduate.
 
-![Job Matching](https://github.com/topics/readme-template)
+![Job Matching]![Job Search](https://github.com/FlameCerberus/Career-Decision-Maker-using-GeminiAPI/assets/96816249/d36b6602-009b-4707-b847-c7cbb6da90d8)
 Input the number of jobs wanted to be listed in the table and select the job scraping website. The application would output the table along with a clickable link on the job title to redirect the user to the website. The resume of an electronic engineer graduate was used and the table output is as shown in the image above.
 
 ## Getting Started
