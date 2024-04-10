@@ -591,7 +591,7 @@ unsafe_allow_html=True)
             )
             jobs.to_csv("jobss.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
             df = pd.read_csv("jobss.csv")
-            df['match_rate'] = df['description'].apply(lambda x: gemini_ai_job_matcher(education, work_experience, projects, skills, x))
+            df['match_rate'] = (df['title'] + ' ' + df['description']).apply(lambda x: gemini_ai_job_matcher(education, work_experience, projects, skills, x))
             df = df[["title", "company", "match_rate", "job_url"]]
             df = df.sort_values(by='match_rate', ascending=False, na_position='last')
             df['Job Title'] = df.apply(lambda row: make_clickable(row['title'], row['job_url']), axis=1)
